@@ -29,6 +29,7 @@ namespace MyCRUD.Models
         [EmailAddress(ErrorMessage = " Invalid Email Address")]
         public string emailID { get; set; }
 
+
         [Required(ErrorMessage = "Contact Number required")]
         [RegularExpression(@"^(?([0-9]{3}))?[-. ]?([0-9]{3})[-. ]?([0-9]{4}).*$", ErrorMessage = "Invalid Phone number")]
         public string phoneNumber { get; set; }
