@@ -17,7 +17,7 @@ namespace MyCRUD.Models
         [Key]
         public int userID { get; set; }
 
-        public byte[] picture { get; set; }
+        
         [Required(ErrorMessage = "First Name Required")]
         [DataType(DataType.Text)]
         public string firstName { get; set; }
@@ -29,8 +29,9 @@ namespace MyCRUD.Models
         [EmailAddress(ErrorMessage = " Invalid Email Address")]
         public string emailID { get; set; }
 
+
         [Required(ErrorMessage = "Contact Number required")]
-        [RegularExpression(@"^(?([0-9]{3}))?[-. ]?([0-9]{3})[-. ]?([0-9]{4}).*$", ErrorMessage = "Not a valid Phone number")]
+        [RegularExpression(@"^(?([0-9]{3}))?[-. ]?([0-9]{3})[-. ]?([0-9]{4}).*$", ErrorMessage = "Invalid Phone number")]
         public string phoneNumber { get; set; }
 
         public virtual ICollection<File> FileData { get; set; }

@@ -47,40 +47,40 @@ namespace MyCRUD.Models
         
         [HttpPost]
         
-        public async Task<ActionResult> Create([Bind(Include = "userID,picture,firstName,lastName,emailID,phoneNumber")] Users users, HttpPostedFileBase file)
+        public async Task<ActionResult> Create([Bind(Include = "userID,firstName,lastName,emailID,phoneNumber")] Users users, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                if (file != null && file.ContentLength > 0)
+                if (upload != null && upload.ContentLength > 0)
                 {
                     var avatar = new File
                     {
-                        FileName = System.IO.Path.GetFileName(file.FileName),
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = FileType.Avatar,
-                        ContentType = file.ContentType
+                        ContentType = upload.ContentType
                      };
-                    using (var reader = new System.IO.BinaryReader(file.InputStream))
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
-                        avatar.Content = reader.ReadBytes(file.ContentLength);
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
                     }
                     users.FileData = new List<File> { avatar };
                 }
                 db.UserData.Add(users);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                  return RedirectToAction("Index");
             }
 
             return View(users);
         }
 
         // GET: Users/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = await db.UserData.FindAsync(id);
+            Users users = db.UserData.Include(s => s.FileData).SingleOrDefault(s => s.userID == id);
             if (users == null)
             {
                 return HttpNotFound();
@@ -91,17 +91,44 @@ namespace MyCRUD.Models
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "userID,picture,firstName,lastName,emailID,phoneNumber")] Users users)
+        public ActionResult Editpost(int? id, HttpPostedFileBase upload)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                db.Entry(users).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var userToUpdate = db.UserData.Find(id);
+            if (TryUpdateModel(userToUpdate, "",
+                new string[] { "userID,picture,firstName,lastName,emailID,phoneNumber" }))
+            {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    if (userToUpdate.FileData.Any(f => f.FileType == FileType.Avatar))
+                    {
+                        db.FileData.Remove(userToUpdate.FileData.First(f => f.FileType == FileType.Avatar));
+                    }
+                    var avatar = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    userToUpdate.FileData = new List<File> { avatar };
+                }
+
+
+                db.Entry(userToUpdate).State = EntityState.Modified;
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            return View(users);
+            return View(userToUpdate);
         }
 
         // GET: Users/Delete/5

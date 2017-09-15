@@ -11,13 +11,16 @@
     <h4>Users</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.picture)
-        </dt>
+        @if (Model.FileData.Any(f => f.FileType == MyCRUD.Models.FileType.Avatar))
+        {
+            <dt>
+                Avatar
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.picture)
-        </dd>
+            <dd>
+                <img src="~/File?id=@Model.FileData.First(f => f.FileType == MyCRUD.Models.FileType.Avatar).FileId" alt="avatar" class="img-circle" height="100" width="100" />
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.firstName)

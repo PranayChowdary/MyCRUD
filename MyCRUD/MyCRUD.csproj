@@ -180,6 +180,22 @@
     <Compile Include="Migrations\201709062127131_fourth one.Designer.cs">
       <DependentUpon>201709062127131_fourth one.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709131448413_pictureRemoved.cs" />
+    <Compile Include="Migrations\201709131448413_pictureRemoved.Designer.cs">
+      <DependentUpon>201709131448413_pictureRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131502539_pictureAdded.cs" />
+    <Compile Include="Migrations\201709131502539_pictureAdded.Designer.cs">
+      <DependentUpon>201709131502539_pictureAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131539339_FileDataRplcdPic.cs" />
+    <Compile Include="Migrations\201709131539339_FileDataRplcdPic.Designer.cs">
+      <DependentUpon>201709131539339_FileDataRplcdPic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709141354406_ImageValidation.cs" />
+    <Compile Include="Migrations\201709141354406_ImageValidation.Designer.cs">
+      <DependentUpon>201709141354406_ImageValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileController.cs" />
@@ -259,6 +275,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709062127131_fourth one.resx">
       <DependentUpon>201709062127131_fourth one.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131448413_pictureRemoved.resx">
+      <DependentUpon>201709131448413_pictureRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131502539_pictureAdded.resx">
+      <DependentUpon>201709131502539_pictureAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131539339_FileDataRplcdPic.resx">
+      <DependentUpon>201709131539339_FileDataRplcdPic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141354406_ImageValidation.resx">
+      <DependentUpon>201709141354406_ImageValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

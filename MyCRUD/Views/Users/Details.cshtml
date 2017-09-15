@@ -13,11 +13,11 @@
         @if (Model.FileData.Any(f => f.FileType == MyCRUD.Models.FileType.Avatar))
         {
         <dt>
-            @Html.DisplayFor(Model => Model.picture)
+            Avatar
         </dt>
 
         <dd>
-            <img src="~/File? id=@Model.FileData.First(f => f.FileType == MyCRUD.Models.FileType.Avatar).FileId" alt="avatar" class="img-circle" height="100" width="100" />
+            <img src="~/File?id=@Model.FileData.First(f => f.FileType == MyCRUD.Models.FileType.Avatar).FileId" alt="avatar" class="img-circle" height="100" width="100" />
         </dd>
         }
         <dt>

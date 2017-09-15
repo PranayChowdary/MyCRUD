@@ -7,6 +7,6 @@ namespace MyCRUD.Models
 {
     public enum FileType
     {
-        Avatar = 1, picture
+        Avatar = 1
     }
 }
