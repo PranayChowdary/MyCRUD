@@ -9,8 +9,7 @@ namespace MyCRUD.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "MyCRUD.Models.userDBContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(MyCRUD.Models.userDBContext context)
