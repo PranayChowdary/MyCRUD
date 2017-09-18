@@ -31,7 +31,7 @@ namespace MyCRUD.Models
 
 
         [Required(ErrorMessage = "Contact Number required")]
-        [RegularExpression(@"^(?([0-9]{3}))?[-. ]?([0-9]{3})[-. ]?([0-9]{4}).*$", ErrorMessage = "Invalid Phone number")]
+        [RegularExpression(@"^((\\+|00)(\\d{1,3})[\\s-]?)?(\\d{10})$", ErrorMessage = "Invalid Phone number")]
         public string phoneNumber { get; set; }
 
         public virtual ICollection<File> FileData { get; set; }
