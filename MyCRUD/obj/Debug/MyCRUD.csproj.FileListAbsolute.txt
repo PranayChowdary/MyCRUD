@@ -50,3 +50,5 @@ C:\GitRepos\MyCRUD\MyCRUD\obj\Debug\MyCRUD.pdb
 C:\GitRepos\MyCRUD\MyCRUD\obj\Debug\MyCRUD.Migrations.InitialAfterGit.resources
 C:\GitRepos\MyCRUD\MyCRUD\obj\Debug\MyCRUD.csproj.GenerateResource.Cache
 C:\GitRepos\MyCRUD\MyCRUD\bin\WebGrease.dll
+C:\GitRepos\MyCRUD\MyCRUD\bin\MyCRUD.dll.CodeAnalysisLog.xml
+C:\GitRepos\MyCRUD\MyCRUD\bin\MyCRUD.dll.lastcodeanalysissucceeded

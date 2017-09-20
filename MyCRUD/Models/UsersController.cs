@@ -16,11 +16,18 @@ namespace MyCRUD.Models
 
         // GET: Users
         public async Task<ActionResult> Index ()
-        {
+         {
             return View(await db.UserData.ToListAsync());
-        }
-
+         }
+        // public ActionResult Index1 ()
+        //{
+        //  return View();
+        //}
         // GET: Users/Details/5
+        public ActionResult About()
+        {
+                        return View();
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)

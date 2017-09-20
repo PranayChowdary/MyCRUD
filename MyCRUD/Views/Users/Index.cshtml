@@ -7,27 +7,27 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New user", "Create")
 </p>
 <table class="table">
     <tr>
       
        
         <th>
-            @Html.DisplayNameFor(model => model.FileData)
+           Picture
         </th>
         
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
+           First Name           
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName)
+           Last Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.emailID)
+            Email ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.phoneNumber)
+            Contact Number
         </th>
         <th></th>
     </tr>
@@ -37,12 +37,12 @@
         <td>
             @if (item.FileData.Any(f => f.FileType == MyCRUD.Models.FileType.Avatar))
             {
-                <img src="~/File?id=@item.FileData.First(f => f.FileType == MyCRUD.Models.FileType.Avatar).FileId" alt="avatar" class="img-circle" height="100" width="100" />
+                <img src="~/File?id=@item.FileData.First(f => f.FileType == MyCRUD.Models.FileType.Avatar).FileId" alt="avatar" class="img-rounded" height="100" width="100" />
             }
             
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.firstName)
+            @Html.DisplayFor( modelItem => item.firstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.lastName)
